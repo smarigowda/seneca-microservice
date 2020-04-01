@@ -1,12 +1,12 @@
 const seneca = require("seneca")();
 
-seneca.add({ service: "math", command: "sum" }, (message, reply) => {
-  let { left, right } = message.data;
+seneca.add({ service: "math", command: "sum" }, (args, reply) => {
+  let { left, right } = args.data;
   reply(null, { answer: left + right });
 });
 
-seneca.add({ service: "math", command: "product" }, (message, reply) => {
-  let { left, right } = message.data;
+seneca.add({ service: "math", command: "product" }, (args, reply) => {
+  let { left, right } = args.data;
   reply(null, { answer: left * right });
 });
 
