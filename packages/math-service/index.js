@@ -22,10 +22,13 @@ seneca.act(
   }
 );
 
-seneca.act({ service: 'math', command: 'product', data: { left: 2, right: 5 }}, (err, result) => {
-  if(err) {
-    console.log('Error while serving command - product');
-    throw err;
+seneca.act(
+  { service: "math", command: "product", data: { left: 2, right: 5 } },
+  (err, result) => {
+    if (err) {
+      console.log("Error while serving command - product");
+      throw err;
+    }
+    console.log(result);
   }
-  console.log(result);
-})
+);
