@@ -27,9 +27,9 @@ async function main() {
       };
       console.log(message);
       await sender.send(message);
-      // const timeoutMs = 30000;
-      // console.log(`waiting for ${timeoutMs} mili sec...`);
-      // await delay({ timeoutMs });
+      const timeoutMs = 1000;
+      console.log(`waiting for ${timeoutMs} mili sec...`);
+      await delay({ timeoutMs });
     }
     await queueClient.close();
   } finally {
