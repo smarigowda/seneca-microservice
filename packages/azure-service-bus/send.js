@@ -1,6 +1,6 @@
 const { ServiceBusClient } = require("@azure/service-bus");
 const config = require("config");
-const { connectionString } = config;
+const { connectionString, queueName } = config;
 
 const delay = ({ timeoutMs }) => {
   return new Promise((resolve, reject) => {
@@ -9,8 +9,6 @@ const delay = ({ timeoutMs }) => {
     }, timeoutMs);
   });
 };
-
-const queueName = "test";
 
 async function main() {
   const sbClient = ServiceBusClient.createFromConnectionString(
@@ -29,9 +27,9 @@ async function main() {
       };
       console.log(message);
       await sender.send(message);
-      const timeoutMs = 30000;
-      console.log(`waiting for ${timeoutMs} mili sec...`);
-      await delay({ timeoutMs });
+      // const timeoutMs = 30000;
+      // console.log(`waiting for ${timeoutMs} mili sec...`);
+      // await delay({ timeoutMs });
     }
     await queueClient.close();
   } finally {

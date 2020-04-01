@@ -8,13 +8,21 @@ async function main() {
   );
   const queueClient = sbClient.createQueueClient(queueName);
   const receiver = queueClient.createReceiver(ReceiveMode.receiveAndDelete);
-  try {
-    const messages = await receiver.receiveMessages(3);
-    console.log(messages.map(message => message.body));
-    await queueClient.close();
-  } finally {
-    await sbClient.close();
-  }
+
+  //   try {
+  //     const messages = await receiver.receiveMessages(3);
+  //     console.log(messages.map(message => message.body));
+  //     await queueClient.close();
+  //   } finally {
+  //     await sbClient.close();
+  //   }
+
+  receiver.registerMessageHandler(
+    message => {
+      console.log(message.body);
+    },
+    error => console.log("error while receiving message", error)
+  );
 }
 
 main().catch(error => {
