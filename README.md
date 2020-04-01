@@ -1,4 +1,4 @@
-# A mono repo to store all Seneca microservices
+# A Mono Repo for Seneca Micro Services
 
 ## Pre-requisite
 
