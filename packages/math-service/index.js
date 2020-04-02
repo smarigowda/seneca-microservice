@@ -15,7 +15,8 @@ seneca.add(
   { service: "math", command: "sum", integer: true },
   (args, callback) => {
     let { left, right } = args.data;
-    seneca.act({ service: "math", command: "sum", data: { left: Math.floor(left), right: Math.floor(right) }}, callback)
+    let data = { left: Math.floor(left), right: Math.floor(right) };
+    seneca.act({ service: "math", command: "sum", data}, callback)
     // callback(null, { answer: Math.floor(left) + Math.floor(right) });
   }
 );

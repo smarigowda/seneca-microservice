@@ -39,5 +39,8 @@ yarn workspace math-service run start
 
 - Code reuse: Action patterns can call other action patterns to do their work. 
 
-- 
+- The patterns resolve using the following rules:
+
+  - More properties win
+  - If the patterns have the same number of properties, they are matched in alphabetical order
 
