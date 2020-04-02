@@ -16,8 +16,14 @@
 
   https://classic.yarnpkg.com/en/docs/workspaces/
 
+## Notes:
+
 - Use selective depencency resolution if required.
+https://classic.yarnpkg.com/en/docs/selective-version-resolutions/
 
-Refer: https://classic.yarnpkg.com/en/docs/selective-version-resolutions/
+![Selective Dependency Resolution](./readme-images/selective-dependency-resolution.jpg)
 
-![](./readme-images/selective-dependency-resolution.jpg)
+- Run commands using `yarn workspace`
+```
+yarn workspace math-service run start
+```

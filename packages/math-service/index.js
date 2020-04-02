@@ -1,15 +1,25 @@
 const seneca = require("seneca")();
 
-seneca.add({ service: "math", command: "sum" }, (args, reply) => {
+// Services
+seneca.add({ service: "math", command: "sum" }, (args, callback) => {
   let { left, right } = args.data;
-  reply(null, { answer: left + right });
+  callback(null, { answer: left + right });
 });
 
-seneca.add({ service: "math", command: "product" }, (args, reply) => {
+seneca.add({ service: "math", command: "product" }, (args, callback) => {
   let { left, right } = args.data;
-  reply(null, { answer: left * right });
+  callback(null, { answer: left * right });
 });
 
+seneca.add(
+  { service: "math", command: "sum", integer: true },
+  (args, callback) => {
+    let { left, right } = args.data;
+    callback(null, { answer: Math.floor(left) + Math.floor(right) });
+  }
+);
+
+// Clients
 seneca.act(
   { service: "math", command: "sum", data: { left: 1, right: 2 } },
   (err, result) => {
@@ -23,11 +33,27 @@ seneca.act(
 );
 
 seneca.act(
-  { service: "math", command: "product", data: { left: 2, right: 5 } },
+  { service: "math", command: "product", data: { left: 2.9, right: 11.5 } },
   (err, result) => {
     if (err) {
       console.log("Error while serving command - product");
       throw err;
+    }
+    console.log(result);
+  }
+);
+
+seneca.act(
+  {
+    service: "math",
+    command: "sum",
+    integer: true,
+    data: { left: 2.9, right: 11.5 }
+  },
+
+  (err, result) => {
+    if (err) {
+      console.log("Error while serving command - math, integer=true");
     }
     console.log(result);
   }
