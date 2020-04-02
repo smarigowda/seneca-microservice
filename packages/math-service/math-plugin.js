@@ -6,6 +6,14 @@ function math(options) {
     let answer = left + right;
     callback(null, { answer });
   });
+
+  this.add({ init: "math" }, init);
+
+  function init(args, callback) {
+    console.log("args = ", args);
+    console.log(callback);
+    callback();
+  }
 }
 
 seneca
