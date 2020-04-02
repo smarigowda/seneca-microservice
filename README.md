@@ -30,6 +30,7 @@ yarn workspace math-service run start
 ```
 
 ## Math Service
+
 Run the service.
 
 ```
@@ -38,11 +39,10 @@ node math-service.js
 ```
 
 Test the service.
+
 ```
 curl -d '{ "service":"math", "command":"sum", "data": { "left": 1, "right": 2 } }' http://localhost:10101/act
 ```
-
-
 
 ## Seneca Notes:
 
@@ -58,12 +58,14 @@ curl -d '{ "service":"math", "command":"sum", "data": { "left": 1, "right": 2 } 
 
 - The ability to easily extend the behavior of your actions by matching more specific kinds of messages is an easy way to handle new and changing requirements. This applies both while your project is in development and when it is live and needs to adapt. It also has the advantage that you do not need to modify existing code. It’s much safer to add new code to handle special cases. In a production system, you won’t even need to do a re-deploy. Your existing services can stay running as they are. All you need to do is start up your new service.
 
-- Code reuse: Action patterns can call other action patterns to do their work. 
+- Code reuse: Action patterns can call other action patterns to do their work.
 
 - The patterns resolve using the following rules:
 
   - More properties win
   - If the patterns have the same number of properties, they are matched in alphabetical order
+
+- With Seneca, you create microservices by calling `seneca.listen` and you talk to the services using `seneca.client`
 
 # Commands:
 
