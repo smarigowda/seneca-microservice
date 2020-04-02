@@ -44,3 +44,9 @@ yarn workspace math-service run start
   - More properties win
   - If the patterns have the same number of properties, they are matched in alphabetical order
 
+# Commands:
+
+```
+node minimal-plugin.js  --seneca.log.info | grep plugin
+node minimal-plugin.js  --seneca.log.all | grep plugin | grep DEFINE
+```
