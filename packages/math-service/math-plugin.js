@@ -1,6 +1,7 @@
 const seneca = require("seneca")();
 
 function math(options) {
+  console.log(options);
   this.add({ service: "math", command: "sum" }, (args, callback) => {
     let { left, right } = args.data;
     let answer = left + right;
@@ -17,7 +18,7 @@ function math(options) {
 }
 
 seneca
-  .use(math)
+  .use(math, { connectionString: "sjafjdkasdkfjaks" })
   .act(
     { service: "math", command: "sum", data: { left: 10, right: 23 } },
     console.log
