@@ -29,11 +29,28 @@
 yarn workspace math-service run start
 ```
 
+## Math Service
+Run the service.
+
+```
+cd packages/math-service
+node math-service.js
+```
+
+Test the service.
+```
+curl -d '{ "service":"math", "command":"sum", "data": { "left": 1, "right": 2 } }' http://localhost:10101/act
+```
+
+
+
 ## Seneca Notes:
 
 - With Seneca, you build up your system by defining a set of patterns that correspond to messages. You organize these patterns into plugins to make logging and debugging easier. You then combine one or more plugins into microservices.
 
 - Plugins often need to do some initialization work, such as connecting to a database. You don’t do this work in the body of the plugin definition function. The definition function is synchronous by design, because all it does is define the plugin. In fact, you should not call seneca.act at all in the plugin definition - call seneca.add only.
+
+- Initialization function must complete before any actions can be performed. If it fails, the whole service fails to initialize.
 
 - The more specific pattern always wins. In other words, the pattern with the highest number of matching attributes has precedence.
 
