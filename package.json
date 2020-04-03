@@ -14,7 +14,8 @@
     "@azure/service-bus": "^1.1.5",
     "config": "^3.3.1",
     "lodash": "^4.17.15",
-    "seneca": "^3.20.3"
+    "seneca": "^3.20.3",
+    "source-map-support": "^0.5.16"
   },
   "devDependencies": {
     "lerna": "^3.14.1"

@@ -1,3 +1,5 @@
+require("source-map-support").install();
+
 class Foo {
   constructor() {
     this.bar();
@@ -9,5 +11,3 @@ class Foo {
 }
 
 new Foo();
-
-
