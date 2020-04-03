@@ -1,4 +1,13 @@
-import { ServiceBusClient, ServiceBusMessage } from "@azure/service-bus";
-console.log(ServiceBusClient);
-let fullname: string = "Santosh Marigowda";
-console.log(fullname);
+class Foo {
+  constructor() {
+    this.bar();
+  }
+
+  bar() {
+    throw new Error("This is a demo...");
+  }
+}
+
+new Foo();
+
+
