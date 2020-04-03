@@ -33,10 +33,19 @@ let numbers = {
   }
 };
 
-let itr = numbers[Symbol.iterator]();
+let itr1 = numbers[Symbol.iterator]();
+let itr2 = numbers[Symbol.iterator]();
+let itr3 = numbers[Symbol.iterator]();
 
-// console.log(itr.next());
-
-for (let num of itr) {
+// iterate with for of
+for (let num of itr1) {
   console.log(num);
 }
+
+// spread an iterator
+let allNumbers = [...itr2];
+console.log(allNumbers);
+
+// destructure an iterator
+let [one, two, ...rest] = itr3;
+console.log(one, two, rest);
