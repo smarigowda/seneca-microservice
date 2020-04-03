@@ -24,3 +24,19 @@ function log(message: string, context: Context = {}) {
 
 log("Hello");
 log("Hello", { userId: "1234" });
+
+let numbers = {
+  *[Symbol.iterator]() {
+    for (let n = 1; n <= 10; n++) {
+      yield n;
+    }
+  }
+};
+
+let itr = numbers[Symbol.iterator]();
+
+// console.log(itr.next());
+
+for (let num of itr) {
+  console.log(num);
+}
